@@ -54,30 +54,32 @@ const App = () => {
       "cod": 0
   });
 
-  const assignUserCords = async ()=> {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLat(position.coords.latitude);
-      setLong(position.coords.longitude);
-    })
-  }
+  // const assignUserCords = async ()=> {
+  //   navigator.geolocation.getCurrentPosition((position) => {
+  //     setLat(position.coords.latitude);
+  //     setLong(position.coords.longitude);
+  //   })
+  // }
   const assignCustomCords =  (cityname)=>{
       axios.get("https://api.openweathermap.org/geo/1.0/direct?q=" + cityname + "&limit=1&appid=4bb9a45b2363f6eb4731e46bfe050825")
           .then(response =>{
               setLat(response.data[0].lat)
               setLong(response.data[0].lon)
           })
+      axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=4bb9a45b2363f6eb4731e46bfe050825&units=metric")
+          .then(response => setWeather(response.data));
 
 
   }
     useMemo(() => {
-            assignUserCords().then(() =>{
-                axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=4bb9a45b2363f6eb4731e46bfe050825&units=metric")
-                    .then(response => setWeather(response.data));
-                console.log(weather)
-
-            });
-        }
-        , [lat, long]);
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLat(position.coords.latitude);
+            setLong(position.coords.longitude);
+        })
+        axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=4bb9a45b2363f6eb4731e46bfe050825&units=metric")
+            .then(response => setWeather(response.data));
+        console.log(weather)
+    }, []);
 
     console.log(weather);
   return (
