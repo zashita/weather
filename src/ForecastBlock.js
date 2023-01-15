@@ -62,25 +62,25 @@ const ForecastBlock = () => {
 
 
     }
-    useMemo(() => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            setLat(position.coords.latitude);
-            setLong(position.coords.longitude);
-        })
-        const options = {
-            method: 'GET',
-            url: 'https://weatherbit-v1-mashape.p.rapidapi.com/forecast/hourly',
-            params: {lat: lat, lon: long, hours: '12'},
-            headers: {
-                'X-RapidAPI-Key': '5ab54c3597msh910ae768f53000ep1026d8jsn26fc10ff7cd9',
-                'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com'
-            }
-        };
-
-        axios.request(options).then(function (response) {
-            console.log(response.data);
-        })
-    }, []);
+    // useMemo(() => {
+    //     navigator.geolocation.getCurrentPosition((position) => {
+    //         setLat(position.coords.latitude);
+    //         setLong(position.coords.longitude);
+    //     })
+    //     const options = {
+    //         method: 'GET',
+    //         url: 'https://weatherbit-v1-mashape.p.rapidapi.com/forecast/hourly',
+    //         params: {lat: lat, lon: long, hours: '12'},
+    //         headers: {
+    //             'X-RapidAPI-Key': '5ab54c3597msh910ae768f53000ep1026d8jsn26fc10ff7cd9',
+    //             'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com'
+    //         }
+    //     };
+    //
+    //     axios.request(options).then(function (response) {
+    //         console.log(response.data);
+    //     })
+    // }, [lat, long]);
 
 
     return (
