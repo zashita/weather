@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import React from "react";
-const StyledHeader = styled.header`
+export const StyledHeader = styled.header`
     width: 100%;
     height: 80px;
-    display: grid;
-  
+    border-bottom: 1px solid #DCDFE7;  
     `

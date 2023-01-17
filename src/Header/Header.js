@@ -1,10 +1,14 @@
 import React from 'react';
+import {StyledHeader} from "./StyledHeader";
+import {HeaderWrapper} from "../Wrapper";
 
-const Header = () => {
+const Header = ({children}) => {
     return (
-        <div>
-
-        </div>
+        <StyledHeader>
+            <HeaderWrapper>
+                {children}
+            </HeaderWrapper>
+        </StyledHeader>
     );
 };
 
