@@ -5,6 +5,7 @@ import axios from "axios";
 
 const App = () => {
   const [city, setCity] = useState("");
+  const [ip, setIp] = useState(0);
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
   const [weather, setWeather] = useState({
@@ -54,33 +55,25 @@ const App = () => {
       "cod": 0
   });
 
-  const assignCustomCords =  (cityname)=>{
-      axios.get("https://api.openweathermap.org/geo/1.0/direct?q=" + cityname + "&limit=1&appid=4bb9a45b2363f6eb4731e46bfe050825")
-          .then(response =>{
-              setLat(response.data[0].lat)
-              setLong(response.data[0].lon)
-          })
-      axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=4bb9a45b2363f6eb4731e46bfe050825&units=metric")
-          .then(response => setWeather(response.data));
+  useEffect(() => console.log(ip))
 
-
-  }
     useMemo(() => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            setLat(position.coords.latitude);
-            setLong(position.coords.longitude);
+        axios.get("https://api.ipify.org?format=json").then((response)=> setIp(response.data.ip))
+
+        console.log(ip);
+        axios.get("https://api.ipgeolocation.io/ipgeo?apiKey=af5d388c6349462ebfbfd81a9f2731d9&ip=" + ip + "&fields=geo").then((response) => {
+            setLat(response.data.latitude)
+            setLong(response.data.longitude)
         })
         axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=4bb9a45b2363f6eb4731e46bfe050825&units=metric")
             .then(response => setWeather(response.data));
-        console.log(weather)
     }, []);
 
-    console.log(weather);
   return (
       <div>
         <h1> Temperature in {weather.name} is {weather.main.temp} °C </h1>
         <input value={city} onChange={(e) => setCity(e.target.value)}></input>
-        <button onClick={()=> assignCustomCords(city)}>ya dura</button>
+        <button>ya dura</button>
       </div>
   );
 };
