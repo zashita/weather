@@ -2,12 +2,10 @@
 
 import React, {useState, useEffect, useMemo} from 'react';
 import axios from "axios";
+import Realtime from "./realtime";
 
 const App = () => {
   const [city, setCity] = useState("");
-  const [ip, setIp] = useState(0);
-  const [lat, setLat] = useState(0);
-  const [long, setLong] = useState(0);
   const [weather, setWeather] = useState({
       "coord": {
           "lon": 0,
@@ -54,27 +52,20 @@ const App = () => {
       "name": "",
       "cod": 0
   });
-
-  useEffect(() => console.log(ip))
-
     useMemo(() => {
-        axios.get("https://api.ipify.org?format=json").then((response)=> setIp(response.data.ip))
-
-        console.log(ip);
-        axios.get("https://api.ipgeolocation.io/ipgeo?apiKey=af5d388c6349462ebfbfd81a9f2731d9&ip=" + ip + "&fields=geo").then((response) => {
-            setLat(response.data.latitude)
-            setLong(response.data.longitude)
+        axios.get("https://api.ipify.org?format=json").then((response)=> {
+            axios.get("https://api.ipgeolocation.io/ipgeo?apiKey=af5d388c6349462ebfbfd81a9f2731d9&ip=" + response.data.ip + "&fields=geo")
+                .then((response_geo) => {
+                    axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + response_geo.data.latitude + "&lon=" + response_geo.data.longitude + "&appid=4bb9a45b2363f6eb4731e46bfe050825&units=metric")
+                        .then((weather_response) => {
+                            setWeather(weather_response.data);
+                        });
+                })
         })
-        axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=4bb9a45b2363f6eb4731e46bfe050825&units=metric")
-            .then(response => setWeather(response.data));
     }, []);
 
   return (
-      <div>
-        <h1> Temperature in {weather.name} is {weather.main.temp} °C </h1>
-        <input value={city} onChange={(e) => setCity(e.target.value)}></input>
-        <button>ya dura</button>
-      </div>
+      <Realtime weather = {weather} />
   );
 };
 
