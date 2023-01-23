@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
 
-const CityInput = () => {
-    const [city, setCity] = useState("");
+const CityInput = (props) => {
     return (
-        <input value={city} onChange={(e) => setCity(e.target.value)}></input>
+        <input value={props.value} onChange={(e) => props.setValue(e.target.value)}
+        onKeyDown={(event)=> {
+            if(event.key === "Enter"){
+                props.setCity(props.value);
+            }
+        }}></input>
     );
 };
 

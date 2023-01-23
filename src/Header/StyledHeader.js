@@ -6,4 +6,8 @@ export const StyledHeader = styled.header`
     border-bottom: 1px solid #DCDFE7;
     align-items: center;
     display: flex;
+    margin: 0 auto;
+    top: 0;
+    position: fixed;
+    background-color: white;
     `

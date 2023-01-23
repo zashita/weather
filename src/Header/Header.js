@@ -1,12 +1,15 @@
 import React from 'react';
 import {StyledHeader} from "./StyledHeader";
-import {HeaderWrapper} from "../Wrapper";
+import {HeaderWrapper} from "../UI/Wrapper";
+import {LogoText} from "../UI/HeaderLogo";
+import CityInput from "../UI/CityInput";
 
-const Header = ({children}) => {
+const Header = (props) => {
     return (
         <StyledHeader>
             <HeaderWrapper>
-                {children}
+                <LogoText >VelichWeather</LogoText>
+                <CityInput {...props}/>
             </HeaderWrapper>
         </StyledHeader>
     );

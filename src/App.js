@@ -2,7 +2,11 @@
 
 import React, {useState, useEffect, useMemo} from 'react';
 import axios from "axios";
-import Realtime from "./realtime";
+import Realtime from "./components/realtime";
+import {LogoText} from "./UI/HeaderLogo";
+import Header from "./Header/Header";
+import CityInput from "./UI/CityInput";
+
 
 const App = () => {
   const [city, setCity] = useState("");
@@ -52,21 +56,35 @@ const App = () => {
       "name": "",
       "cod": 0
   });
+  const [value, setValue] = useState("");
+  const weather_api_key = `4bb9a45b2363f6eb4731e46bfe050825`;
     useMemo(() => {
-        axios.get("https://api.ipify.org?format=json").then((response)=> {
-            axios.get("https://api.ipgeolocation.io/ipgeo?apiKey=af5d388c6349462ebfbfd81a9f2731d9&ip=" + response.data.ip + "&fields=geo")
-                .then((response_geo) => {
-                    axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + response_geo.data.latitude + "&lon=" + response_geo.data.longitude + "&appid=4bb9a45b2363f6eb4731e46bfe050825&units=metric")
-                        .then((weather_response) => {
-                            setWeather(weather_response.data);
-                        });
-                })
-        })
-    }, []);
+        if (city === ""){
+            axios.get(`https://api.ipify.org?format=json`).then((response)=> {
+                axios.get("https://api.ipgeolocation.io/ipgeo?apiKey=af5d388c6349462ebfbfd81a9f2731d9&ip=" + response.data.ip + "&fields=geo")
+                    .then((response_geo) => {
+                        axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + response_geo.data.latitude + "&lon=" + response_geo.data.longitude + `&appid=${weather_api_key}&units=metric`)
+                            .then((weather_response) => {
+                                setWeather(weather_response.data);
+                            });
+                    })
+            })
+        } else{
+            axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${1}&appid=${weather_api_key}`)
+                .then((city_response)=> axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city_response.data[0].lat}&lon=${city_response.data[0].lon}&appid=${weather_api_key}&units=metric`)
+                    .then((weather_response)=> {
+                        setWeather(weather_response.data)
+                    }))
+        }
+    }, [city]);
 
   return (
-      <Realtime weather = {weather} />
-  );
+      <div>
+          <Header value = {value} setValue = {setValue} city = {city} setCity = {setCity}/>
+          <Realtime weather = {weather} />
+      </div>
+
+  )
 };
 
 export default App;
