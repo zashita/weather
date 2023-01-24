@@ -6,6 +6,7 @@ import Realtime from "./components/realtime";
 import {LogoText} from "./UI/HeaderLogo";
 import Header from "./Header/Header";
 import CityInput from "./UI/CityInput";
+import Forecast from "./components/forecast";
 
 
 const App = () => {
@@ -58,6 +59,7 @@ const App = () => {
   });
   const [value, setValue] = useState("");
   const weather_api_key = `4bb9a45b2363f6eb4731e46bfe050825`;
+  const [forecastObjects, setForecastObjects] = useState([]);
     useMemo(() => {
         if (city === ""){
             axios.get(`https://api.ipify.org?format=json`).then((response)=> {
@@ -67,14 +69,21 @@ const App = () => {
                             .then((weather_response) => {
                                 setWeather(weather_response.data);
                             });
+                        axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${response_geo.data.latitude}&lon=${response_geo.data.longitude}&appid=${weather_api_key}`)
+                            .then((response_array) => setForecastObjects(response_array.data.list))
                     })
             })
         } else{
             axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${1}&appid=${weather_api_key}`)
-                .then((city_response)=> axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city_response.data[0].lat}&lon=${city_response.data[0].lon}&appid=${weather_api_key}&units=metric`)
-                    .then((weather_response)=> {
-                        setWeather(weather_response.data)
-                    }))
+                .then((city_response)=>
+                {
+                    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city_response.data[0].lat}&lon=${city_response.data[0].lon}&appid=${weather_api_key}&units=metric`)
+                        .then((weather_response)=> {
+                            setWeather(weather_response.data)
+                        })
+                    axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${city_response.data[0].lat}&lon=${city_response.data[0].lon}&appid=${weather_api_key}`)
+                        .then((response_array)=> setForecastObjects(response_array.data.list))
+                })
         }
     }, [city]);
 
@@ -82,6 +91,7 @@ const App = () => {
       <div>
           <Header value = {value} setValue = {setValue} city = {city} setCity = {setCity}/>
           <Realtime weather = {weather} />
+          <Forecast weatherObjects = {forecastObjects}/>
       </div>
 
   )
