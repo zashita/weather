@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import React from "react";
 export const RealtimeBlock = styled.div`
-    margin: 140px 0;
+    margin-top: 140px;
+  margin-bottom: 0;
     min-width: 416px;
     height: 186px;
     display: grid;

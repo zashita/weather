@@ -69,7 +69,7 @@ const App = () => {
                             .then((weather_response) => {
                                 setWeather(weather_response.data);
                             });
-                        axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${response_geo.data.latitude}&lon=${response_geo.data.longitude}&appid=${weather_api_key}`)
+                        axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${response_geo.data.latitude}&lon=${response_geo.data.longitude}&appid=${weather_api_key}&units=metric`)
                             .then((response_array) => setForecastObjects(response_array.data.list))
                     })
             })
@@ -81,7 +81,7 @@ const App = () => {
                         .then((weather_response)=> {
                             setWeather(weather_response.data)
                         })
-                    axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${city_response.data[0].lat}&lon=${city_response.data[0].lon}&appid=${weather_api_key}`)
+                    axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${city_response.data[0].lat}&lon=${city_response.data[0].lon}&appid=${weather_api_key}&units=metric`)
                         .then((response_array)=> setForecastObjects(response_array.data.list))
                 })
         }
