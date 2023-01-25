@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Wrapper} from "../UI/Wrapper";
 import {RealtimeBlock, RealtimeMeteoPhenBlock, RealtimeTemp, RealtimeTempVal, BlockText, Line} from "../UI/Realtime";
+import Clouds from "../Icons/states/Clouds.svg";
 
 
 const Realtime = (props) => {
@@ -11,7 +12,7 @@ const Realtime = (props) => {
                 <RealtimeTemp>
                     <RealtimeTempVal> {Math.round(props.weather.main.temp)}°</RealtimeTempVal>
                 </RealtimeTemp>
-                <RealtimeMeteoPhenBlock/>
+                <RealtimeMeteoPhenBlock> <img src={Clouds}/></RealtimeMeteoPhenBlock>
                 <div>
                     <Line>
                         <BlockText>Real feel: </BlockText>
@@ -24,23 +25,14 @@ const Realtime = (props) => {
                     </Line>
 
                     <Line>
-                        <BlockText>Real feel:</BlockText>
-                        <BlockText color = {"black"}>{props.weather.main.feels_like}°</BlockText>
+                        <BlockText>Humidity:</BlockText>
+                        <BlockText color = {"black"}>{props.weather.main.humidity}°</BlockText>
                     </Line>
 
                     <Line>
-                        <BlockText>Real feel:</BlockText>
-                        <BlockText>{props.weather.main.feels_like}°</BlockText>
+                        <BlockText>Pressure:</BlockText>
+                        <BlockText color = {"black"}>{props.weather.main.pressure}°</BlockText>
                     </Line>
-                    {/*<BlockText>*/}
-                    {/*    {props.weather.wind.speed} m/s, {props.weather.wind.deg}*/}
-                    {/*</BlockText>*/}
-                    {/*<BlockText>*/}
-                    {/*    Humidity: {props.weather.main.humidity} %*/}
-                    {/*</BlockText>*/}
-                    {/*<BlockText>*/}
-                    {/*    Pressure: {props.weather.main.pressure} mbar*/}
-                    {/*</BlockText>*/}
                 </div>
             </RealtimeBlock>
         </Wrapper>

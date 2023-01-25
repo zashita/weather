@@ -9,6 +9,8 @@ export const RealtimeBlock = styled.div`
    grid-template-columns: auto 60px auto;
     `
 export const RealtimeTempVal = styled.p`
+  font-weight: 300;
+  font-style: normal;
     font-size: 150px;
     line-height: 100px;
 `

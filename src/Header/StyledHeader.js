@@ -9,5 +9,42 @@ export const StyledHeader = styled.header`
     margin: 0 auto;
     top: 0;
     position: fixed;
-    background-color: white;
+    background-color: #F6F6F6;
     `
+export const SearchIcon = styled.div`
+    margin-left: 0;
+    border-radius: 0 20px 20px 0;
+   width: 30px;
+  height: 34px;
+  background: #FFFFFF;
+  /* System/Light gray */
+
+  border: 1px solid #DCDFE7;
+  border-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+    
+    `
+export const StyledInput = styled.input`
+  border-radius: 20px 0 0 20px;
+  padding-left: 12px;
+  width: 180px;
+  height: 34px;
+  background: #FFFFFF;
+  /* System/Light gray */
+
+  border: 1px solid #DCDFE7;
+  border-right: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+
+
+  /* System/Gray */
+
+  color: #A8B0C2;
+
+`

@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
+import {StyledInput} from "../Header/StyledHeader";
 
 const CityInput = (props) => {
     return (
-        <input value={props.value} onChange={(e) => props.setValue(e.target.value)}
+        <StyledInput value={props.value} placeholder={"City"} onChange={(e) => props.setValue(e.target.value)}
         onKeyDown={(event)=> {
             if(event.key === "Enter"){
                 props.setCity(props.value);
             }
-        }}></input>
+        }}></StyledInput>
     );
 };
 
