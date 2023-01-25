@@ -26,12 +26,12 @@ const Realtime = (props) => {
 
                     <Line>
                         <BlockText>Humidity:</BlockText>
-                        <BlockText color = {"black"}>{props.weather.main.humidity}°</BlockText>
+                        <BlockText color = {"black"}>{props.weather.main.humidity}%</BlockText>
                     </Line>
 
                     <Line>
                         <BlockText>Pressure:</BlockText>
-                        <BlockText color = {"black"}>{props.weather.main.pressure}°</BlockText>
+                        <BlockText color = {"black"}>{props.weather.main.pressure} mbar</BlockText>
                     </Line>
                 </div>
             </RealtimeBlock>

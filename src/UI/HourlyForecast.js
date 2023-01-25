@@ -5,11 +5,22 @@ export const MainBlock = styled.div`
   border-radius: 30px;
   background-color: white;
   padding-top: 20px;
+  padding-left: 20px;
     `
 
 export const ForecastList = styled.ul`
     display: flex;
     `
+export const ForecastItem = styled.li`
+    list-style-type: none;
+    display: grid;
+    grid-template-rows: 19px 40px 25px;
+    grid-row-gap: 15px;
+    margin-right: 30px;
+  :last-child{
+    margin-right: 0;
+  }
+`
 export const ForecastText = styled.p`
   font-weight: 400;
   font-size: 20px;
@@ -23,7 +34,6 @@ export const ForecastText = styled.p`
 export const TitleText = styled.p`
   width: 152px;
   height: 16px;
-  margin-left: 20px;
   margin-bottom: 15px;
   font-style: normal;
   font-weight: 450;
@@ -41,9 +51,7 @@ export const GrayLine = styled.div`
     width: 96.3302752293578%;
     height: 0;
     border-bottom: 1px solid #DCDFE7;
-    margin-bottom: 45px;
-    margin-left: auto; 
-    margin-right:auto;
+    margin-bottom: 30px;
     position: relative;
     
     

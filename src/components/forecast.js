@@ -1,28 +1,29 @@
 import React, {useMemo, useState} from 'react';
 import axios from "axios";
 import {Wrapper} from "../UI/Wrapper";
-import {ForecastList, ForecastText, GrayLine, MainBlock} from "../UI/HourlyForecast";
+import {ForecastItem, ForecastList, ForecastText, GrayLine, MainBlock} from "../UI/HourlyForecast";
 import {TitleText} from "../UI/HourlyForecast";
 
 const Forecast = (props) => {
-const temperature = [...props.weatherObjects].map((item) =>{
-    console.log(item)
+const forecast_array = [...props.weatherObjects].map((item) =>{
     return (
-        item
+        [item.dt_txt.split(` `).pop().slice(0,5), Math.round(item.main.temp)]
     )}
 );
+
     return(
         <Wrapper>
             <MainBlock>
                 <TitleText>HOURLY FORECAST</TitleText>
                 <GrayLine/>
                 <ForecastList>
-                    {temperature.map((item)=>{
+                    {[...forecast_array].map((item)=>{
                         return(
-                            <li>
-                                <ForecastText>{item.dt}</ForecastText>
-                                <ForecastText>{Math.round(item.main.temp)}</ForecastText>
-                            </li>
+                            <ForecastItem>
+                                <ForecastText>{item[0]}</ForecastText>
+                                <div></div>
+                                <ForecastText>{item[1]}</ForecastText>
+                            </ForecastItem>
                         )
                     })}
                 </ForecastList>
