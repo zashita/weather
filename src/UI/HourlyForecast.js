@@ -56,3 +56,11 @@ export const GrayLine = styled.div`
     
     
     `
+export const ForecastContainer = styled.div`
+    width: 920px;
+    overflow: hidden;
+    margin-left: 20px;
+    margin-right: 20px;
+    
+    
+    `

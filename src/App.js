@@ -7,6 +7,7 @@ import {LogoText} from "./UI/HeaderLogo";
 import Header from "./Header/Header";
 import CityInput from "./UI/CityInput";
 import Forecast from "./components/forecast";
+import Loader from "./components/loader";
 
 
 const App = () => {
@@ -60,6 +61,7 @@ const App = () => {
   const [value, setValue] = useState("");
   const weather_api_key = `4bb9a45b2363f6eb4731e46bfe050825`;
   const [forecastObjects, setForecastObjects] = useState([]);
+  const[loading, setLoading] = useState(true);
     useMemo(() => {
         if (city === ""){
             axios.get(`https://api.ipify.org?format=json`).then((response)=> {
@@ -70,7 +72,10 @@ const App = () => {
                                 setWeather(weather_response.data);
                             });
                         axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${response_geo.data.latitude}&lon=${response_geo.data.longitude}&appid=${weather_api_key}&units=metric`)
-                            .then((response_array) => setForecastObjects(response_array.data.list))
+                            .then((response_array) => {
+                                setForecastObjects(response_array.data.list);
+                                setLoading(false);
+                            })
                     })
             })
         } else{
@@ -82,19 +87,22 @@ const App = () => {
                             setWeather(weather_response.data)
                         })
                     axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${city_response.data[0].lat}&lon=${city_response.data[0].lon}&appid=${weather_api_key}&units=metric`)
-                        .then((response_array)=> setForecastObjects(response_array.data.list))
+                        .then((response_array)=> {
+                            setForecastObjects(response_array.data.list)
+                            setLoading(false);
+                        });
+
                 })
         }
     }, [city]);
+    return (
+        <div>
+            <Header value = {value} setValue = {setValue} city = {city} setCity = {setCity}/>
+            {loading?<Loader/>:<Realtime weather = {weather} />}
+            {loading?<div/> :<Forecast weatherObjects = {forecastObjects}/>}
+        </div>
 
-  return (
-      <div>
-          <Header value = {value} setValue = {setValue} city = {city} setCity = {setCity}/>
-          <Realtime weather = {weather} />
-          <Forecast weatherObjects = {forecastObjects}/>
-      </div>
-
-  )
+    )
 };
 
 export default App;

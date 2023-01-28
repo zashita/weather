@@ -1,22 +1,25 @@
 import styled from "styled-components";
 import React from "react";
+import {TitleText} from "./HourlyForecast";
 export const RealtimeBlock = styled.div`
     margin-top: 140px;
   margin-bottom: 0;
     min-width: 416px;
+    max-width: 500px;
     height: 186px;
     display: grid;
-   grid-template-columns: auto 60px auto;
+   grid-template-columns: auto 90px auto;
+    grid-template-rows: 16px 160px;
     `
 export const RealtimeTempVal = styled.p`
   font-weight: 300;
   font-style: normal;
     font-size: 150px;
-    line-height: 100px;
+    line-height: 150px;
 `
 
 export const RealtimeTemp = styled.div`
-    width: 100%;
+   
   height: 100%;
       `
  export const RealtimeMeteoPhenBlock = styled.div`
@@ -24,6 +27,7 @@ export const RealtimeTemp = styled.div`
    height: 100%;
    display: flex;
    align-items: center;
+   justify-content: left;
    
  `
 export const BlockText = styled.p`
@@ -37,5 +41,15 @@ export const Line = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+  :last-child{
+    margin-bottom: 0;
+  }
     `
+export const Location = styled.div`
+    grid-column:1/ span 3 ;
+    `
+export const LocationText = styled(TitleText)`
+margin-bottom: 0;
+  width: 100%;
+`
