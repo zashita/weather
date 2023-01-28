@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 export const MainBlock = styled.div`
   width: 1090px;
   height: 223px;
@@ -10,6 +11,10 @@ export const MainBlock = styled.div`
 
 export const ForecastList = styled.ul`
     display: flex;
+  transition: translate;
+  transition-property: transform;
+  transition-duration:  0.8s;
+  transition-timing-function: ease-in-out;
     `
 export const ForecastItem = styled.li`
     list-style-type: none;
@@ -23,7 +28,7 @@ export const ForecastItem = styled.li`
 `
 export const ForecastText = styled.p`
   font-weight: 400;
-  font-size: 20px;
+  font-size: ${props => props.size? props.size: "20px"};
   line-height: 23px;
   text-align: center;
   
