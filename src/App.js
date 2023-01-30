@@ -8,6 +8,7 @@ import Header from "./Header/Header";
 import CityInput from "./UI/CityInput";
 import Forecast from "./components/forecast";
 import Loader from "./components/loader";
+import DailyForecast from "./components/daily_forecast";
 
 
 const App = () => {
@@ -99,7 +100,8 @@ const App = () => {
         <div>
             <Header value = {value} setValue = {setValue} city = {city} setCity = {setCity}/>
             {loading?<Loader/>:<Realtime weather = {weather} />}
-            {loading?<div/> :<Forecast weatherObjects = {forecastObjects}/>}
+            {loading?<div/>:<Forecast weatherObjects = {forecastObjects}/>}
+            {loading?<div/>:<DailyForecast weatherObjects = {forecastObjects}/>}
         </div>
 
     )

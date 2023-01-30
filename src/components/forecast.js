@@ -11,12 +11,14 @@ const Forecast = (props) => {
 
 const [offset, setOffset] = useState(0);
 const FORECAST_ARRAY_LENGTH = 20;
+const LIST_WIDTH = (FORECAST_ARRAY_LENGTH * 42) + ((FORECAST_ARRAY_LENGTH - 1) * 30);
 const SLIDE_WIDTH = 300;
 const forecast_array = [...props.weatherObjects].map((item) =>{
     return (
         [item.dt_txt.split(` `).pop().slice(0,5), item.weather[0].main, Math.round(item.main.temp), item.dt]
     )}
 );
+console.log(offset);
 
     return(
         <Wrapper>
@@ -51,7 +53,7 @@ const forecast_array = [...props.weatherObjects].map((item) =>{
                 </ForecastContainer>
                     <img src={ArrowRight} alt="Right"
                          onClick={() => setOffset((current) =>{
-                             return current - SLIDE_WIDTH;
+                             return Math.max(current - SLIDE_WIDTH, -LIST_WIDTH);
                          })}
                     />
                 </div>
