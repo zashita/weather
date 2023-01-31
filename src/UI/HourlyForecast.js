@@ -7,6 +7,7 @@ export const MainBlock = styled.div`
   background-color: white;
   padding-top: 20px;
   padding-left: 20px;
+  margin-bottom: 20px;
     `
 
 export const ForecastList = styled.ul`
