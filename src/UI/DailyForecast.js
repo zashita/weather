@@ -15,6 +15,9 @@ export const Card = styled.div`
     `
 
 export const DayInfo = styled.div`
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 30px;
     
     `
 
@@ -23,4 +26,7 @@ export const DayTemp = styled.div`
   font-size: 80px;
   line-height: 100%;
   margin-bottom: 20px;
+    `
+export const InfoRow = styled.div`
+    
     `

@@ -1,7 +1,8 @@
 import React from 'react';
-import {Card, DailyForecastContainer, DayTemp} from "../UI/DailyForecast";
+import {Card, DailyForecastContainer, DayInfo, DayTemp, InfoLine, InfoRow} from "../UI/DailyForecast";
 import {Wrapper} from "../UI/Wrapper";
 import {GrayLine, TitleText} from "../UI/HourlyForecast";
+import {BlockText, Line} from "../UI/Realtime";
 
 const DailyForecast = (props) => {
 
@@ -80,6 +81,29 @@ const DailyForecast = (props) => {
                             <TitleText>TOMORROW</TitleText>
                             <GrayLine/>
                             <DayTemp>{day.temp}°</DayTemp>
+                            <DayInfo>
+                                <InfoRow>
+                                    <Line>
+                                        <BlockText>Reel feel: </BlockText>
+                                        <BlockText color = "black">{day.real_feel}°</BlockText>
+                                    </Line>
+                                    <Line>
+                                        <BlockText>Wind: </BlockText>
+                                        <BlockText color = "black">{day.wind}</BlockText>
+                                    </Line>
+                                </InfoRow>
+                                <InfoRow>
+                                    <Line>
+                                        <BlockText>Humidity: </BlockText>
+                                        <BlockText color = "black">{day.humidity}</BlockText>
+                                    </Line>
+                                    <Line>
+                                        <BlockText>Pressure: </BlockText>
+                                        <BlockText color = "black">{day.pressure}</BlockText>
+                                    </Line>
+                                </InfoRow>
+                            </DayInfo>
+
                         </Card>
                     )
                 })}
