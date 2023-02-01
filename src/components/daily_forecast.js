@@ -1,8 +1,9 @@
 import React from 'react';
-import {Card, DailyForecastContainer, DayInfo, DayTemp, InfoLine, InfoRow} from "../UI/DailyForecast";
+import {Card, DailyForecastContainer, DayInfo, DayTemp, InfoRow} from "../UI/DailyForecast";
 import {Wrapper} from "../UI/Wrapper";
 import {GrayLine, TitleText} from "../UI/HourlyForecast";
 import {BlockText, Line} from "../UI/Realtime";
+import {months, weekdays} from "../Interfaces/Arrays";
 
 const DailyForecast = (props) => {
 
@@ -42,43 +43,32 @@ const DailyForecast = (props) => {
         return item.weather[0].main;
     })]
 
-    const Day_1 = {
-        temp: GetAverage(temps, 0),
-        real_feel: GetAverage(rf_array, 0),
-        wind: GetAverage(winds,0),
-        humidity: GetAverage(humidity_array, 0),
-        pressure: GetAverage(pressure_array,0)
-    }
-    const Day_2 = {
-        temp: GetAverage(temps, 8),
-        real_feel: GetAverage(rf_array, 8),
-        wind: GetAverage(winds,8),
-        humidity: GetAverage(humidity_array, 8),
-        pressure: GetAverage(pressure_array,8)
-    }
-    const Day_3 = {
-        temp: GetAverage(temps, 16),
-        real_feel: GetAverage(rf_array, 16),
-        wind: GetAverage(winds,16),
-        humidity: GetAverage(humidity_array, 16),
-        pressure: GetAverage(pressure_array,16)
-    }
-    const Day_4 = {
-        temp: GetAverage(temps, 24),
-        real_feel: GetAverage(rf_array, 24),
-        wind: GetAverage(winds,24),
-        humidity: GetAverage(humidity_array, 24),
-        pressure: GetAverage(pressure_array,24)
-    }
-    const days = [Day_1, Day_2, Day_3]
-    console.log(days, forecast_array.length)
+    const dates = [...forecast_array].map((item) =>{
+        return new Date(item.dt * 1000);
+    } )
+    let firstForecastOfTheDay = -forecastsPerDay;
+    const days = Array.from(Array(3), ()=>{
+        firstForecastOfTheDay += forecastsPerDay;
+        return(
+            {
+                temp: GetAverage(temps, firstForecastOfTheDay),
+                real_feel: GetAverage(rf_array, firstForecastOfTheDay),
+                wind: GetAverage(winds,firstForecastOfTheDay),
+                humidity: GetAverage(humidity_array, firstForecastOfTheDay),
+                pressure: GetAverage(pressure_array,firstForecastOfTheDay),
+                date: `${weekdays[dates[firstForecastOfTheDay + 4].getDay()]}, ${months[dates[firstForecastOfTheDay+4].getMonth()]} ${dates[firstForecastOfTheDay +4].getDate()}`
+            }
+        )
+    })
+
+    console.log(days)
     return (
         <Wrapper>
             <DailyForecastContainer>
-                {days.map((day)=>{
+                {days.map((day,index)=>{
                     return(
                         <Card>
-                            <TitleText>TOMORROW</TitleText>
+                            {index===0?<TitleText>TOMORROW</TitleText>:<TitleText>{day.date}</TitleText>}
                             <GrayLine/>
                             <DayTemp>{day.temp}°</DayTemp>
                             <DayInfo>

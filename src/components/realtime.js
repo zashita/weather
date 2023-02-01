@@ -9,15 +9,14 @@ import {
     Line,
     Location, LocationText
 } from "../UI/Realtime";
-import Clouds from "../Icons/states/Clouds.svg";
 import StateImage from "../UI/stateImage";
 import {TitleText} from "../UI/HourlyForecast";
+import {months} from "../Interfaces/Arrays";
 
 
 const Realtime = (props) => {
-    const Months = [`Jan`, `Feb`, `Mar`, `Apr`, `May`, `June`, `July`, 'Aug', `Sept`, `Oct`, `Nov`, `Dec`]
     const currentDate = new Date()
-    const DateNLocation = `${props.weather.name}, ${Months[currentDate.getMonth()]} 
+    const DateNLocation = `${props.weather.name}, ${months[currentDate.getMonth()]} 
         ${currentDate.getDate()}, 
         ${currentDate.getHours()}:${currentDate.getMinutes()}`
 
