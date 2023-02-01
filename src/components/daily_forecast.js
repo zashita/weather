@@ -14,6 +14,9 @@ const DailyForecast = (props) => {
           return a + b;
       })/forecastsPerDay);
     }
+    const GetMax = (array, start)=>{
+        return Math.round(Math.max.apply(null, array.slice(start,start + forecastsPerDay)));
+    }
 
     const currentDate = new Date();
     const forecast_array = [...props.weatherObjects.filter(item=>
@@ -52,7 +55,7 @@ const DailyForecast = (props) => {
         firstForecastOfTheDay += forecastsPerDay;
         return(
             {
-                temp: GetAverage(temps, firstForecastOfTheDay),
+                temp: GetMax(temps, firstForecastOfTheDay),
                 real_feel: GetAverage(rf_array, firstForecastOfTheDay),
                 wind: GetAverage(winds,firstForecastOfTheDay),
                 humidity: GetAverage(humidity_array, firstForecastOfTheDay),

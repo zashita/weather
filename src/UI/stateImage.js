@@ -21,7 +21,10 @@ const StateImage = (props) => {
             return (<PhenImg {...props} src={Snow} alt={props.state}/>);
 
         case "rain":
-            return (<PhenImg {...props} src={Rain} alt={props.state}/>)
+            return (<PhenImg {...props} src={Rain} alt={props.state}/>);
+
+        case "mist":
+            return (<PhenImg {...props} src={Fog} alt={props.state}/>);
 
         default:
             return (<p>ERROR</p>)
