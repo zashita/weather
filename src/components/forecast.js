@@ -53,7 +53,7 @@ console.log(offset);
                 </ForecastContainer>
                     <img src={ArrowRight} alt="Right"
                          onClick={() => setOffset((current) =>{
-                             return Math.max(current - SLIDE_WIDTH, -LIST_WIDTH);
+                             return Math.max(current - SLIDE_WIDTH, -LIST_WIDTH + 920);
                          })}
                     />
                 </div>

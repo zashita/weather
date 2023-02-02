@@ -9,6 +9,7 @@ export const StyledHeader = styled.header`
     margin: 0 auto;
     top: 0;
     position: fixed;
+    z-index: 5000;
     background-color: #F6F6F6;
     `
 export const SearchIcon = styled.div`

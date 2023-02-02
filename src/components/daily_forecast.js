@@ -17,6 +17,9 @@ const DailyForecast = (props) => {
     const GetMax = (array, start)=>{
         return Math.round(Math.max.apply(null, array.slice(start,start + forecastsPerDay)));
     }
+    const GetMin = (array, start)=>{
+        return Math.round(Math.min.apply(null, array.slice(start, start + forecastsPerDay)));
+    }
 
     const currentDate = new Date();
     const forecast_array = [...props.weatherObjects.filter(item=>
@@ -51,12 +54,12 @@ const DailyForecast = (props) => {
         return new Date(item.dt * 1000);
     } )
     let firstForecastOfTheDay = -forecastsPerDay;
-    const days = Array.from(Array(3), ()=>{
+    const days = Array.from(Array(4), ()=>{
         firstForecastOfTheDay += forecastsPerDay;
         return(
             {
                 temp: GetMax(temps, firstForecastOfTheDay),
-                real_feel: GetAverage(rf_array, firstForecastOfTheDay),
+                min_temp: GetMin(temps, firstForecastOfTheDay),
                 wind: GetAverage(winds,firstForecastOfTheDay),
                 humidity: GetAverage(humidity_array, firstForecastOfTheDay),
                 pressure: GetAverage(pressure_array,firstForecastOfTheDay),
@@ -78,8 +81,8 @@ const DailyForecast = (props) => {
                             <DayInfo>
                                 <InfoRow>
                                     <Line>
-                                        <BlockText>Reel feel: </BlockText>
-                                        <BlockText color = "black">{day.real_feel}°</BlockText>
+                                        <BlockText>Min. temp: </BlockText>
+                                        <BlockText color = "black">{day.min_temp}°</BlockText>
                                     </Line>
                                     <Line>
                                         <BlockText>Wind: </BlockText>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 export const DailyForecastContainer = styled.div`
     display: grid;
     grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
   grid-gap: 20px;
     
     `
