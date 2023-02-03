@@ -9,5 +9,5 @@ export const LogoText = styled.p`
   /* System/Black */
 
   color: #202020;
-
+  
 `

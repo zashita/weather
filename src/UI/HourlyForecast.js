@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 export const MainBlock = styled.div`
-  width: 1090px;
+  width: 100%;
   height: 223px;
   border-radius: 30px;
   background-color: white;
