@@ -3,7 +3,7 @@ import React from "react";
 export const StyledHeader = styled.header`
     width: 100%;
     height: 80px;
-    border-bottom: 1px solid #DCDFE7;
+    border-bottom: 1px solid ${props => props.theme.colors.dividers};
     align-items: center;
     display: flex;
     margin: 0 auto;

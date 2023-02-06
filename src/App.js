@@ -9,6 +9,44 @@ import CityInput from "./UI/CityInput";
 import Forecast from "./components/forecast";
 import Loader from "./components/loader";
 import DailyForecast from "./components/daily_forecast";
+import {ThemeProvider} from "styled-components";
+import Global from "./global";
+
+const light_theme = {
+    colors:{
+        mainText: `#202020`,
+        additionalText: `#A8B0C2`,
+        dividers: `#DCDFE7`,
+        pageBackground: `#F6F6F6`,
+        cardBackground: `#FFFFFF`
+
+    },
+    media:{
+        phone: "(max-width: 480px)",
+        tablet_640: "(max-width: 640px) and (min-width: 480px)",
+        tablet_768: "(max-width: 768px) and (min-width: 640px)",
+        desktop_1024: "(max-width: 1024px) and (min-width: 768px)",
+        desktop_1080: "(max-width: 1080px) and (min-width: 1024px)"
+    }
+}
+const dark_theme = {
+    colors:{
+        mainText: `#F2F2F2`,
+        additionalText: `#919191`,
+        dividers: `#4E4E4E`,
+        pageBackground: `#222222`,
+        cardBackground: `#292929`
+
+    },
+    media:{
+        phone: "(max-width: 480px)",
+        tablet_640: "(max-width: 640px) and (min-width: 480px)",
+        tablet_768: "(max-width: 768px) and (min-width: 640px)",
+        desktop_1024: "(max-width: 1024px) and (min-width: 768px)",
+        desktop_1080: "(max-width: 1080px) and (min-width: 1024px)"
+    }
+}
+
 
 
 const App = () => {
@@ -97,13 +135,15 @@ const App = () => {
         }
     }, [city]);
     return (
+        <ThemeProvider theme={dark_theme}>
+            <Global/>
         <div>
             <Header value = {value} setValue = {setValue} city = {city} setCity = {setCity}/>
             {loading?<Loader/>:<Realtime weather = {weather} />}
             {loading?<div/>:<Forecast weatherObjects = {forecastObjects}/>}
             {loading?<div/>:<DailyForecast weatherObjects = {forecastObjects}/>}
         </div>
-
+        </ThemeProvider>
     )
 };
 
