@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   @media ${props => props.theme.media.tablet_640}{
     width: 600px;
   }
-  @media ${props => props.theme.media.tablet_640}{
+  @media ${props => props.theme.media.tablet_768}{
     width: 720px;
   }
   @media ${props => props.theme.media.desktop_1024}{

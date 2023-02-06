@@ -38,22 +38,22 @@ const Realtime = (props) => {
                 <div style={{paddingTop: "20px"}}>
                     <Line>
                         <BlockText>Real feel: </BlockText>
-                        <BlockText color = {"black"}>{props.weather.main.feels_like}°</BlockText>
+                        <BlockText color = {"main"}>{props.weather.main.feels_like}°</BlockText>
                     </Line>
 
                     <Line>
                         <BlockText>Wind: </BlockText>
-                        <BlockText color = {"black"}>{props.weather.wind.speed} m/s, {props.weather.wind.deg}</BlockText>
+                        <BlockText color = {"main"}>{props.weather.wind.speed} m/s, {props.weather.wind.deg}</BlockText>
                     </Line>
 
                     <Line>
                         <BlockText>Humidity:</BlockText>
-                        <BlockText color = {"black"}>{props.weather.main.humidity}%</BlockText>
+                        <BlockText color = {"main"}>{props.weather.main.humidity}%</BlockText>
                     </Line>
 
                     <Line>
                         <BlockText>Pressure:</BlockText>
-                        <BlockText color = {"black"}>{props.weather.main.pressure} mbar</BlockText>
+                        <BlockText color = {"main"}>{props.weather.main.pressure} mbar</BlockText>
                     </Line>
                 </div>
             </RealtimeBlock>

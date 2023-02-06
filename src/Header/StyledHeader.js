@@ -10,17 +10,17 @@ export const StyledHeader = styled.header`
     top: 0;
     position: fixed;
     z-index: 5000;
-    background-color: #F6F6F6;
+    background-color: ${props => props.theme.colors.pageBackground};
     `
 export const SearchIcon = styled.div`
     margin-left: 0;
     border-radius: 0 20px 20px 0;
    width: 30px;
   height: 34px;
-  background: #FFFFFF;
+  background: ${props => props.theme.colors.cardBackground};
   /* System/Light gray */
 
-  border: 1px solid #DCDFE7;
+  border: 1px solid ${props => props.theme.colors.dividers};
   border-left: 0;
   display: flex;
   align-items: center;
@@ -32,10 +32,10 @@ export const StyledInput = styled.input`
   padding-left: 12px;
   width: 180px;
   height: 34px;
-  background: #FFFFFF;
+  background: ${props => props.theme.colors.cardBackground};
   /* System/Light gray */
 
-  border: 1px solid #DCDFE7;
+  border: 1px solid ${props => props.theme.colors.dividers};
   border-right: 0;
   font-style: normal;
   font-weight: 400;
@@ -46,6 +46,6 @@ export const StyledInput = styled.input`
 
   /* System/Gray */
 
-  color: #A8B0C2;
+  color: ${props => props.theme.colors.additionalText};
 
 `

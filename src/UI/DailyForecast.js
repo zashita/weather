@@ -9,7 +9,7 @@ export const DailyForecastContainer = styled.div`
 export const Card = styled.div`
   width: 350px;
   height: 260px;
-  background: #FFFFFF;
+  background: ${props => props.theme.colors.cardBackground};
   border-radius: 20px;
   padding-top: 20px;
   padding-left: 20px;
@@ -27,6 +27,7 @@ export const DayTemp = styled.div`
   font-size: 80px;
   line-height: 100%;
   margin-bottom: 20px;
+  color: ${props => props.theme.colors.mainText};
     `
 export const InfoRow = styled.div`
     

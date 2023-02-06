@@ -15,7 +15,7 @@ export default createGlobalStyle`
  html{
    font-family: 'Satoshi-Regular';
   font-size: 10px;
-  background-color: #F6F6F6;
+  background-color: ${props => props.theme.colors.pageBackground};
 
  }
 

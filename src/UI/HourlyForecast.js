@@ -4,7 +4,7 @@ export const MainBlock = styled.div`
   width: 100%;
   height: 223px;
   border-radius: 30px;
-  background-color: white;
+  background-color: ${props => props.theme.colors.cardBackground};
   padding-top: 20px;
   padding-left: 20px;
   margin-bottom: 20px;
@@ -34,7 +34,7 @@ export const ForecastText = styled.p`
   text-align: center;
   
 
-  color: #202020;
+  color: ${props => props.color || props.theme.colors.mainText};
     `
 
 export const TitleText = styled.p`
@@ -50,13 +50,13 @@ export const TitleText = styled.p`
 
   /* System/Gray */
 
-  color: #A8B0C2;
+  color: ${props => props.theme.colors.additionalText};
     `
 
 export const GrayLine = styled.div`
     width: 96.3302752293578%;
     height: 0;
-    border-bottom: 1px solid #DCDFE7;
+    border-bottom: 1px solid ${props => props.theme.colors.dividers};
     margin-bottom: 30px;
     position: relative;
     
@@ -67,6 +67,18 @@ export const ForecastContainer = styled.div`
     overflow: hidden;
     margin-left: 20px;
     margin-right: 20px;
+    @media ${props => props.theme.media.phone} {
+      width: 400px;
+    }
+    @media ${props => props.theme.media.tablet_640}{
+      width: 560px;
+    }
+    @media ${props => props.theme.media.tablet_768}{
+      width: 680px;
+    }
+    @media ${props => props.theme.media.desktop_1024}{
+      width: 750px;
+    }
     
     
     `

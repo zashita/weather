@@ -82,21 +82,21 @@ const DailyForecast = (props) => {
                                 <InfoRow>
                                     <Line>
                                         <BlockText>Min. temp: </BlockText>
-                                        <BlockText color = "black">{day.min_temp}°</BlockText>
+                                        <BlockText color = "main">{day.min_temp}°</BlockText>
                                     </Line>
                                     <Line>
                                         <BlockText>Wind: </BlockText>
-                                        <BlockText color = "black">{day.wind}</BlockText>
+                                        <BlockText color = "main">{day.wind}</BlockText>
                                     </Line>
                                 </InfoRow>
                                 <InfoRow>
                                     <Line>
                                         <BlockText>Humidity: </BlockText>
-                                        <BlockText color = "black">{day.humidity}</BlockText>
+                                        <BlockText color = "main">{day.humidity}</BlockText>
                                     </Line>
                                     <Line>
                                         <BlockText>Pressure: </BlockText>
-                                        <BlockText color = "black">{day.pressure}</BlockText>
+                                        <BlockText color = "main">{day.pressure}</BlockText>
                                     </Line>
                                 </InfoRow>
                             </DayInfo>

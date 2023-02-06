@@ -16,6 +16,7 @@ export const RealtimeTempVal = styled.p`
   font-style: normal;
     font-size: 150px;
     line-height: 150px;
+  color: ${props => props.theme.colors.mainText};
 `
 
 export const RealtimeTemp = styled.div`
@@ -31,7 +32,10 @@ export const RealtimeTemp = styled.div`
    
  `
 export const BlockText = styled.p`
-    color: ${props => props.color? props.color: "#A8B0C2"};
+    color: ${props => {
+        if(props.color === "main") return props.theme.colors.mainText;
+        else return props.theme.colors.additionalText
+    }};
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

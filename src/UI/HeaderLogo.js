@@ -8,6 +8,6 @@ export const LogoText = styled.p`
 
   /* System/Black */
 
-  color: #202020;
+  color: ${props => props.theme.colors.mainText};
   
 `
