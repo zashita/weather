@@ -77,7 +77,7 @@ export const ForecastContainer = styled.div`
       width: 680px;
     }
     @media ${props => props.theme.media.desktop_1024}{
-      width: 750px;
+      width: 82.41%;
     }
     
     

@@ -33,7 +33,7 @@ console.log(offset);
             <MainBlock>
                 <TitleText>HOURLY FORECAST</TitleText>
                 <GrayLine/>
-                <div style={{display: "flex"}}>
+                <div style={{display: "flex", paddingRight: "20px"}}>
                     <Arrows src={ArrowLeft} alt="Left"
                          onClick={() => setOffset((current) =>{
                              return Math.min(current + SLIDE_WIDTH, 0);
