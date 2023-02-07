@@ -17,10 +17,13 @@ export const RealtimeTempVal = styled.p`
     font-size: 150px;
     line-height: 150px;
   color: ${props => props.theme.colors.mainText};
+  @media ${props => props.theme.media.phone} {
+    font-size: 80px;
+    line-height: 150px;
+  }
 `
 
 export const RealtimeTemp = styled.div`
-   
   height: 100%;
       `
  export const RealtimeMeteoPhenBlock = styled.div`

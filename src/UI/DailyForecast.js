@@ -4,7 +4,18 @@ export const DailyForecastContainer = styled.div`
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto;
   grid-gap: 20px;
-    
+  
+  @media ${props => props.theme.media.tablet_640}{
+    grid-template-columns: auto auto;
+  }
+  @media ${props => props.theme.media.tablet_768}{
+    grid-template-columns: auto auto;
+
+  }
+  @media ${props => props.theme.media.phone}{
+    grid-template-columns: auto auto auto auto;
+    overflow: hidden;
+  }
     `
 export const Card = styled.div`
   width: 350px;
@@ -13,12 +24,32 @@ export const Card = styled.div`
   border-radius: 20px;
   padding-top: 20px;
   padding-left: 20px;
+  
+  @media ${props => props.theme.media.tablet_640}{
+    width: 290px;
+    height: 324px;
+  }
+  @media ${props => props.theme.media.tablet_768}{
+    width: 350px;
+  }
+  @media ${props => props.theme.media.desktop_1024}{
+    width: 290px;
+    height: 324px;
+  }
     `
 
 export const DayInfo = styled.div`
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 30px;
+  @media ${props => props.theme.media.desktop_1024}{
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
+  @media ${props => props.theme.media.tablet_640}{
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
     
     `
 

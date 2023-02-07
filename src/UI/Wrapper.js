@@ -5,16 +5,16 @@ export const Wrapper = styled.div`
     width: 1090px;
     margin: 0 auto;
   @media ${props => props.theme.media.phone} {
-    width: 440px;
+    width: 91.66%;
   }
   @media ${props => props.theme.media.tablet_640}{
-    width: 600px;
+    width: 93.75%;
   }
   @media ${props => props.theme.media.tablet_768}{
-    width: 720px;
+    width: 93.75%;;
   }
   @media ${props => props.theme.media.desktop_1024}{
-    width: 910px;
+    width: 88.86%;
   }
 `
 export const HeaderWrapper = styled(Wrapper)`

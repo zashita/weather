@@ -49,3 +49,6 @@ export const StyledInput = styled.input`
   color: ${props => props.theme.colors.additionalText};
 
 `
+export const ThemeIcon = styled.img`
+    margin-left: 30px;
+    `

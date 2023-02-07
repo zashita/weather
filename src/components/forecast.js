@@ -1,7 +1,15 @@
 import React, {useMemo, useState} from 'react';
 import axios from "axios";
 import {Wrapper} from "../UI/Wrapper";
-import {ForecastContainer, ForecastItem, ForecastList, ForecastText, GrayLine, MainBlock} from "../UI/HourlyForecast";
+import {
+    Arrows,
+    ForecastContainer,
+    ForecastItem,
+    ForecastList,
+    ForecastText,
+    GrayLine,
+    MainBlock
+} from "../UI/HourlyForecast";
 import {TitleText} from "../UI/HourlyForecast";
 import StateImage from "../UI/stateImage";
 import ArrowLeft from "../Icons/ArrowLeft.svg";
@@ -26,7 +34,7 @@ console.log(offset);
                 <TitleText>HOURLY FORECAST</TitleText>
                 <GrayLine/>
                 <div style={{display: "flex"}}>
-                    <img src={ArrowLeft} alt="Left"
+                    <Arrows src={ArrowLeft} alt="Left"
                          onClick={() => setOffset((current) =>{
                              return Math.min(current + SLIDE_WIDTH, 0);
                          })}
@@ -51,7 +59,7 @@ console.log(offset);
                     })}
                 </ForecastList>
                 </ForecastContainer>
-                    <img src={ArrowRight} alt="Right"
+                    <Arrows src={ArrowRight} alt="Right"
                          onClick={() => setOffset((current) =>{
                              return Math.max(current - SLIDE_WIDTH, -LIST_WIDTH + 920);
                          })}

@@ -51,53 +51,9 @@ const dark_theme = {
 
 const App = () => {
   const [city, setCity] = useState("");
-  const [weather, setWeather] = useState({
-      "coord": {
-          "lon": 0,
-          "lat": 0
-      },
-      "weather": [
-          {
-              "id": 0,
-              "main": "",
-              "description": "",
-              "icon": ""
-          }
-      ],
-      "base": "",
-      "main": {
-          "temp": 0,
-          "feels_like": 0,
-          "temp_min": 0,
-          "temp_max": 0,
-          "pressure": 0,
-          "humidity": 0,
-          "sea_level": 0,
-          "grnd_level": 0
-      },
-      "visibility": 0,
-      "wind": {
-          "speed": 0,
-          "deg": 0,
-          "gust": 0
-      },
-      "clouds": {
-          "all": 0
-      },
-      "dt": 0,
-      "sys": {
-          "type": 0,
-          "id": 0,
-          "country": "",
-          "sunrise": 0,
-          "sunset": 0
-      },
-      "timezone": 0,
-      "id": 0,
-      "name": "",
-      "cod": 0
-  });
-  const [value, setValue] = useState("");
+  const [weather, setWeather] = useState([]);
+  const [cityInputValue, setCityInputValue] = useState("");
+  const [currentTheme,setCurrentTheme] = useState(`light`);
   const weather_api_key = `4bb9a45b2363f6eb4731e46bfe050825`;
   const [forecastObjects, setForecastObjects] = useState([]);
   const[loading, setLoading] = useState(true);
@@ -135,10 +91,10 @@ const App = () => {
         }
     }, [city]);
     return (
-        <ThemeProvider theme={dark_theme}>
+        <ThemeProvider theme={currentTheme === `light`?light_theme: dark_theme}>
             <Global/>
         <div>
-            <Header value = {value} setValue = {setValue} city = {city} setCity = {setCity}/>
+            <Header value = {cityInputValue} setValue = {setCityInputValue} city = {city} setCity = {setCity} currentTheme = {currentTheme} setCurrentTheme = {setCurrentTheme}/>
             {loading?<Loader/>:<Realtime weather = {weather} />}
             {loading?<div/>:<Forecast weatherObjects = {forecastObjects}/>}
             {loading?<div/>:<DailyForecast weatherObjects = {forecastObjects}/>}

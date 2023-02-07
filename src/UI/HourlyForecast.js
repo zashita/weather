@@ -82,3 +82,17 @@ export const ForecastContainer = styled.div`
     
     
     `
+ export const Arrows = styled.img`
+   @media ${props => props.theme.media.phone} {
+     width: 0;
+     height: 0
+   }
+   }
+   @media ${props => props.theme.media.tablet_640}{
+     width: 0;
+     height: 0
+   }
+   @media ${props => props.theme.media.tablet_768}{
+     width: 0;
+     height: 0 
+ `
