@@ -30,6 +30,9 @@ export const Card = styled.div`
   @media ${props => props.theme.media.tablet_768}{
     width: 100%;
   }
+  @media ${props => props.theme.media.phone}{
+    width: 91.66vw;
+  }
     `
 
 export const DayInfo = styled.div`

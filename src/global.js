@@ -13,20 +13,24 @@ export default createGlobalStyle`
 
  }
  html{
-   font-family: 'Satoshi-Regular';
+   font-family: "Segoe UI";
   font-size: 10px;
   background-color: ${props => props.theme.colors.pageBackground};
 
  }
 
+ /* metrophobic-regular - latin */
  @font-face {
-   font-family: 'Satoshi-Variable';
-   src: url('./fonts/Satoshi-Variable.woff2') format('woff2'),
-   url('./fonts/Satoshi-Variable.woff') format('woff'),
-   url('./fonts/Satoshi-Variable.ttf') format('truetype');
-   font-weight: 300 900;
-   font-display: swap;
+   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Metrophobic';
    font-style: normal;
+   font-weight: 400;
+   src: url('./fonts/metrophobic-v19-latin-regular.eot'); /* IE9 Compat Modes */
+   src: url('./fonts/metrophobic-v19-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+   url('./fonts/metrophobic-v19-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+   url('./fonts/metrophobic-v19-latin-regular.woff') format('woff'), /* Modern Browsers */
+   url('./fonts/metrophobic-v19-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+   url('./fonts/metrophobic-v19-latin-regular.svg#Metrophobic') format('svg'); /* Legacy iOS */
  }
 
 

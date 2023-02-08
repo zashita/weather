@@ -50,5 +50,5 @@ export const StyledInput = styled.input`
 
 `
 export const ThemeIcon = styled.img`
-    margin-left: 30px;
+    margin-left: 1.65vw;
     `
