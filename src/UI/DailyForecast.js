@@ -5,6 +5,7 @@ export const DailyForecastContainer = styled.div`
     grid-template-rows: auto auto;
   grid-gap: 20px;
   width: 100%;
+  margin-bottom: 120px;
   
   @media ${props => props.theme.media.tablet_640}, ${props => props.theme.media.tablet_768}{
     grid-template-columns: auto auto;

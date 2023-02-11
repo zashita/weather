@@ -11,6 +11,7 @@ import Loader from "./components/loader";
 import DailyForecast from "./components/daily_forecast";
 import {ThemeProvider} from "styled-components";
 import Global from "./global";
+import Footer from "./Footer/Footer";
 
 const light_theme = {
     colors:{
@@ -98,6 +99,7 @@ const App = () => {
             {loading?<Loader/>:<Realtime weather = {weather} />}
             {loading?<div/>:<Forecast weatherObjects = {forecastObjects}/>}
             {loading?<div/>:<DailyForecast weatherObjects = {forecastObjects}/>}
+            {loading?<div/>:<Footer/>}
         </div>
         </ThemeProvider>
     )
