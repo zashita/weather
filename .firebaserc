@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "velich-weather",
+    "velich-weater": "velich-weather"
+  },
+  "targets": {},
+  "etags": {}
+}
